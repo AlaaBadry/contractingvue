@@ -7,7 +7,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="5" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-primary">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <span class="d-none d-md-inline">ِArchtopia Tenders</span>
+          <span class="d-none d-md-inline">Archtopia Tenders</span>
         </h1>
       </div>
       
@@ -859,296 +859,416 @@ export default {
 </script> 
 
 <style>
-/* تصغير عرض السايدبار إلى 12.5% */
-.w-12 {
-  width: 12.5% !important;
+/* تحسينات متغيرة الألوان */
+:root {
+  --primary-color: #3a86ff;
+  --primary-dark: #2667cc;
+  --primary-light: rgba(58, 134, 255, 0.1);
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --sidebar-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --table-header-bg: linear-gradient(135deg, #3a86ff 0%, #2667cc 100%);
+  --transition-time: 0.3s;
+  --border-radius: 0.75rem;
+  --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-/* Gradient sidebar background */
-.bg-gradient-sidebar {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+/* تحسينات الجدول الرئيسي */
+.table {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background-color: transparent;
 }
 
-/* Gradient table header */
-.bg-gradient-table-header {
-  background: linear-gradient(135deg, #3a86ff 0%, #2667cc 100%) !important;
-}
-
-/* Primary gradient */
-.bg-gradient-primary {
-  background: linear-gradient(135deg, #3a86ff 0%, #2667cc 100%) !important;
-}
-
-/* Soft color backgrounds for badges */
-.bg-soft-primary {
-  background-color: rgba(58, 134, 255, 0.1) !important;
-}
-.bg-soft-success {
-  background-color: rgba(40, 167, 69, 0.1) !important;
-}
-.bg-soft-warning {
-  background-color: rgba(255, 193, 7, 0.1) !important;
-}
-.bg-soft-danger {
-  background-color: rgba(220, 53, 69, 0.1) !important;
-}
-
-/* Subtle background pattern */
-.bg-pattern {
-  background-color: #f8f9fa;
-  background-image: radial-gradient(#e9ecef 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-.transition-all {
-  transition: all 0.3s ease;
-}
-
-.table-hover tbody tr:hover {
-  background-color: rgba(58, 134, 255, 0.05) !important;
-}
-
-.card {
-  border-radius: 0.75rem;
+.table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--table-header-bg);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 1rem 1.25rem;
   border: none;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
-/* Shadow effects */
-.shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-.shadow {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-.shadow-lg {
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+.table tbody tr {
+  background-color: white;
+  transition: all 0.2s ease;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
 }
 
-/* Hover shadow effect */
-.hover-shadow:hover {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+.table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Collapse row styles */
-.collapse-row {
-  transition: all 0.3s ease;
+.table tbody td {
+  padding: 1rem 1.25rem;
+  vertical-align: middle;
+  border-top: none;
+  border-bottom: none;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
-.details-panel {
-  background-color: #f8f9fa;
-  border-top: 1px solid #dee2e6;
+/* زوايا مدورة للصفوف */
+.table tbody tr td:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
-.main-row:hover {
-  background-color: rgba(58, 134, 255, 0.05);
+.table tbody tr td:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* تحسينات النص داخل الخلايا */
+.table td {
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.table td.text-primary {
+  font-weight: 600;
+}
+
+/* تحسينات البادجات */
+.table .badge {
+  font-size: 0.7em;
+  padding: 0.35em 0.65em;
+  min-width: 70px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50px;
+}
+
+/* تحسينات الأزرار داخل الجدول */
+.table .btn {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+/* تنسيقات خاصة للصفوف المميزة */
+.table tbody tr.main-row {
   cursor: pointer;
 }
 
-.form-control-plaintext {
-  padding: 0.375rem 0;
-  line-height: 1.5;
-  background-color: transparent;
+.table tbody tr.main-row:hover td {
+  background-color: rgba(58, 134, 255, 0.03);
+}
+
+/* تنسيقات الصف التفصيلي */
+.table tbody tr.details-panel {
+  background-color: #f9fafc;
+  box-shadow: none;
+}
+
+.table tbody tr.details-panel td {
+  padding: 0;
+}
+
+.table tbody tr.details-panel .card {
   border: none;
+  box-shadow: none;
+  background-color: transparent;
 }
 
-/* New Tender Form Animation */
-.collapse-transition {
-  transition: all 0.3s ease;
-  overflow: hidden;
+/* تأثيرات خاصة للصفوف المميزة */
+.table tbody tr.main-row td:first-child {
+  position: relative;
+  padding-left: 1.5rem;
 }
 
-/* Contracting Items Table Styles */
-.table-bordered {
-  border: 1px solid #dee2e6;
+.table tbody tr.main-row td:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--primary-color);
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
-.table-bordered th, .table-bordered td {
-  border: 1px solid #dee2e6;
+/* تحسينات لعناصر SVG داخل الجدول */
+.table svg {
   vertical-align: middle;
 }
 
-.table-primary {
-  background-color: rgba(58, 134, 255, 0.1) !important;
+/* تحسينات الخطوط */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
 }
 
-.table-primary th {
-  background-color: #3a86ff !important;
-  color: white;
+/* تحسينات الشريط الجانبي */
+.bg-gradient-sidebar {
+  background: var(--sidebar-bg) !important;
+  min-width: 250px;
+  transition: all var(--transition-time) ease;
 }
 
-.form-control-sm {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  border-radius: 0.375rem;
+/* تحسينات الروابط في الشريط الجانبي */
+.nav-link {
+  border-radius: var(--border-radius);
+  margin: 0.25rem 0;
+  transition: all var(--transition-time) ease;
 }
 
-/* Equal width buttons */
-.flex-grow-1 {
-  flex-grow: 1;
-  min-width: 0;
+.nav-link:hover {
+  transform: translateX(5px);
 }
 
-/* Group row styling */
-.table-group {
-  background-color: rgba(58, 134, 255, 0.05);
+/* تحسينات البطاقات */
+.card {
+  border-radius: var(--border-radius);
+  border: none;
+  transition: all var(--transition-time) ease;
 }
 
-.table-group td {
-  font-weight: bold;
-  color: #3a86ff;
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow);
 }
 
-/* Hover effect for sidebar links */
-.hover-bg:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+/* تحسينات حقول الإدخال */
+.form-control, .form-select {
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  transition: all var(--transition-time) ease;
 }
 
-/* Status badges */
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25);
+}
+
+/* تحسينات البادجات */
 .badge {
-  padding: 0.35em 0.65em;
-  font-size: 0.75em;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.5px;
+  padding: 0.35em 0.65em;
 }
 
-.badge.rounded-pill {
-  padding-right: 0.75em;
-  padding-left: 0.75em;
+/* تحسينات الحركات والانتقالات */
+.transition-all {
+  transition: all var(--transition-time) ease;
 }
 
-/* Responsive adjustments */
+.collapse-transition {
+  transition: all var(--transition-time) ease;
+  overflow: hidden;
+}
+
+/* تحسينات التباين والألوان */
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-soft-primary {
+  background-color: var(--primary-light) !important;
+}
+
+/* تحسينات جدول العناصر التعاقدية */
+.contracting-items-table {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.contracting-items-table th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+}
+
+.contracting-items-table td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+.contracting-items-table tr.group-row {
+  background-color: rgba(58, 134, 255, 0.05);
+  font-weight: 600;
+}
+
+/* تحسينات تفاصيل التكلفة */
+.cost-details-card {
+  border-left: 3px solid var(--primary-color);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+/* تحسينات زر الإضافة */
+.add-item-btn {
+  transition: all var(--transition-time) ease;
+}
+
+.add-item-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسينات حالة التحميل */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loading-spinner {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.25rem;
+}
+
+/* تحسينات الشكل العام */
+.main-container {
+  background-color: #f8fafc;
+}
+
+.content-area {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* تحسينات شريط البحث */
+.search-box {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--secondary-color);
+}
+
+/* تحسينات الحالة الفارغة */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+/* تحسينات التنقل بين العناصر */
+.tab-content {
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+/* تحسينات للاستجابة على الشاشات الصغيرة */
 @media (max-width: 768px) {
-  .w-12 {
-    width: 60px !important;
+  .table thead {
+    display: none;
   }
   
-  .details-panel .row > div {
-    width: 100%;
+  .table tbody tr {
+    display: block;
     margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   }
   
+  .table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  }
+  
+  .table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #4a5568;
+    margin-right: 1rem;
+    flex: 1;
+  }
+  
+  .table tbody td > * {
+    flex: 2;
+    text-align: right;
+  }
+  
+  .table tbody td:first-child,
+  .table tbody td:last-child {
+    border-radius: 0;
+  }
+  
+  .table tbody td:first-child {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  
+  .table tbody td:last-child {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom: none;
+  }
+  
+  .table tbody tr.details-panel td {
+    padding: 0;
+  }
+  
+  .table tbody tr.details-panel .card {
+    margin-top: 0.5rem;
+  }
+
+  /* تحسينات الشريط الجانبي للجوال */
+  .w-12 {
+    width: 80px !important;
+  }
+  
+  .nav-link {
+    justify-content: center;
+    padding: 0.75rem;
+  }
+  
+  .nav-link span {
+    display: none;
+  }
+  
+  .sidebar-brand span {
+    display: none;
+  }
+
+  /* تحسينات التخطيط العام للجوال */
   .d-flex.justify-content-between {
     flex-direction: column;
     gap: 1rem;
   }
   
-  .position-relative {
+  .search-box {
     width: 100% !important;
   }
-  
-  .col-md-6 {
-    width: 100%;
-  }
-
-  /* Make table scrollable on small screens */
-  .table-responsive {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Checkbox alignment */
-.form-check-input {
-  margin-left: 0;
-}
-
-/* Icon spacing */
-.fas {
-  margin-right: 0.5rem;
-}
-
-/* Hide text on small screens in sidebar */
-@media (max-width: 992px) {
-  .d-md-inline {
-    display: none !important;
-  }
-  
-  .d-md-block {
-    display: none !important;
-  }
-  
-  .nav-link {
-    justify-content: center;
-  }
-}
-
-/* Cost details card styling */
-.collapse {
-  transition: all 0.3s ease;
-}
-
-.card-body {
-  background-color: #f8f9fa;
-  border-radius: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-/* Custom border colors */
-.border-primary {
-  border-color: #3a86ff !important;
-}
-
-/* Input group styling */
-.input-group-text {
-  background-color: #f8f9fa;
-  color: #495057;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* Animation for loading spinner */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.spinner-border {
-  animation: spin 0.75s linear infinite;
-}
-
-/* Custom transition for form elements */
-.form-control, .form-select {
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.form-control:focus, .form-select:focus {
-  border-color: #3a86ff;
-  box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25);
-}
-
-/* Custom styling for empty states */
-.text-muted {
-  color: #6c757d !important;
-}
-
-/* Custom table hover effect */
-.table-hover tbody tr {
-  transition: all 0.2s ease;
-}
-
-.table-hover tbody tr:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 </style>
